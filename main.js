@@ -1,7 +1,11 @@
 const gameInput = document.querySelector(".js-input-number");
 const playButton = document.querySelector(".js-play-button");
 const gameTip = document.querySelector(".js-game-tip");
+const gameAllTip = document.querySelector(".js-game-all-tip");
 const gameTry = document.querySelector(".js-game-try");
+const gameAllTry = document.querySelector(".js-game-all-try");
+let count = 0;
+gameInput.value = "";
 const randomNumber = getRandomInt(100);
 console.log(randomNumber);
 
@@ -20,25 +24,22 @@ function gameNumber() {
         resetInput();
     } else if (gameNumber > randomNumber) {
         gameTip.innerHTML = "Demasiado alto";
-        gameTry.innerHTML ++;
+        count ++;
         resetInput();
     } else if (gameNumber < randomNumber) {
         gameTip.innerHTML = "Demasiado bajo"; 
-        gameTry.innerHTML ++;
+        count ++;
         resetInput();
     } else {
-        gameTip.innerHTML = "Has ganado campeona!!!";
+        gameAllTip.innerHTML = "Has ganado campeona!!!";
+        count ++;
+        gameAllTry.innerHTML = `Enhorabuena! te ha llevado ${count} intentos ganar, refresca la página para volver a jugar!`;
     }
+    gameTry.innerHTML = count;
 }
 
 function resetInput() {
     gameInput.value = "";
-}
-
-function resetGame() {
-    resetInput();
-    const randomNumber = getRandomInt(100);
-    gameTip.innerHTML = "Escribe un número y dale a Prueba";
 }
 
 function playGame(event) {
