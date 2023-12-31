@@ -1,52 +1,71 @@
 "use strict";
 
-const gameInput = document.querySelector(".js-input-number");
-const playButton = document.querySelector(".js-play-button");
-const gameTip = document.querySelector(".js-game-tip");
-const gameAllTip = document.querySelector(".js-game-all-tip");
-const gameTry = document.querySelector(".js-game-try");
-const gameAllTry = document.querySelector(".js-game-all-try");
-let count = 0;
-gameInput.value = "";
-const randomNumber = getRandomInt(100);
-console.log(randomNumber);
+// QUERYSELECTORS
+const playerNumberInput = document.querySelector(".js_playerNumberInput");
+const testButton = document.querySelector(".js_testButton");
+const clueBox = document.querySelector(".js_clueBox");
+const triesBox = document.querySelector(".js_triesBox");
+const triesBoxCounterNumber = document.querySelector(".js_triesBoxCounterNumber");
 
-function getRandomInt(max) {
-    return Math.ceil(Math.random() * max);
+// GLOBAL VARIABLES
+const randomNumber = getRandomNumber(100);
+let triesCounter = 0;
+
+
+//FUNCTIONS
+function getRandomNumber(max) { 
+    return Math.ceil(Math.random() * max); 
+} 
+
+function getPlayerNumber() {
+    return parseInt(playerNumberInput.value);
 }
 
-function gameNumber() {
-    const gameNumber = parseInt(gameInput.value);
-    console.log(gameNumber);
+function writeClue(message) {
+    clueBox.innerHTML = message;
+}
 
-    if (isNaN(gameNumber) || gameNumber === " ") {
-        gameTip.innerHTML = "Escribe un número por favor";
-    } else if (gameNumber < 1 || gameNumber > 100 ) {
-        gameTip.innerHTML = "El número debe estar entre 1 y 100";
-        resetInput();
-    } else if (gameNumber > randomNumber) {
-        gameTip.innerHTML = "Demasiado alto";
-        count ++;
-        resetInput();
-    } else if (gameNumber < randomNumber) {
-        gameTip.innerHTML = "Demasiado bajo"; 
-        count ++;
-        resetInput();
-    } else {
-        gameAllTip.innerHTML = "Has ganado campeona!!!";
-        count ++;
-        gameAllTry.innerHTML = `Enhorabuena! te ha llevado ${count} intentos ganar, refresca la página para volver a jugar!`;
+function updateTries() {
+    triesCounter++;
+    triesBoxCounterNumber.innerHTML = triesCounter;
+}
+
+function checkNumbers(playerNumber) {
+    console.log({playerNumber, randomNumber})
+
+    if (isNaN(playerNumber) || playerNumber === " ") {
+        writeClue("Escribe un número por favor");
+    } 
+    else if (playerNumber < 1 || playerNumber > 100 ) {
+        writeClue("El número debe estar entre 1 y 100");
+    } 
+    else if (playerNumber === randomNumber) {
+        writeClue("Has ganado campeona!!!");
+        triesBox.innerHTML = `Enhorabuena! Te ha llevado ${triesCounter} intentos ganar, refresca la página para volver a jugar!`;
+        updateTries();
     }
-    gameTry.innerHTML = count;
+    else if (playerNumber > randomNumber) {
+        writeClue("Demasiado alto");
+        updateTries();
+    } 
+    else if (playerNumber < randomNumber) {
+        writeClue("Demasiado bajo");
+        updateTries();
+    }
 }
 
-function resetInput() {
-    gameInput.value = "";
+function resetPlayerInputNumber() {
+    playerNumberInput.value = "";
 }
 
-function playGame(event) {
+function handleClickTestButton(event) {
     event.preventDefault();
-    gameNumber();
+    const playerNumber = getPlayerNumber();
+    checkNumbers(playerNumber);
 }
 
-playButton.addEventListener('click', playGame);
+// EVENTS
+testButton.addEventListener('click', handleClickTestButton);
+
+// CONSOLE
+console.log(`Mi número aleatorio es ${randomNumber}`);
