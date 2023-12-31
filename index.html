@@ -5,16 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Evaluación intermedia módulo 2</title>
     <link rel="stylesheet" href="./styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nova+Square&family=Silkscreen&display=swap" rel="stylesheet">
 </head>
-<body>
-    <h1 class="game-title">Adivina el número</h1>
+<body class="game">
     <form class="game-form">
-        <label for="Number" class="game-label">Introduce aquí tu numero:</label>
-        <input type="text" id="Number" name="Number" class="player-number-input js_playerNumberInput" />
-        <input type="submit" class="test-submit js_testButton" value="Prueba">
+        <img src="./img/numbers.png" width="280px">
+        <h1 class="game-title">Adivina el número</h1>
+        <!--<label for="Number" class="form-label">Introduce aquí tu número:</label>-->
+        <input type="text" id="Number" name="Number" placeholder="Introduce un número entre 1 y 100" class="form-input js_playerNumberInput" />
+        <input type="submit" class="form-submit js_testButton" value="Prueba">
+        <p class="clue-box js_clueBox">Pista: Escribe un número y dale a Prueba</span></p>
+        <p class="tries-box js_triesBox">Número de intentos: <span class="tries-counter js_triesBoxCounterNumber">0</span></p>
     </form>
-    <p class="game-tip js_clueBox">Pista: Escribe un número y dale a Prueba</span></p>
-    <p class="game-try js_triesBox">Número de intentos: <span class="js_triesBoxCounterNumber">0</span></p>
     <script src="./js/main.js"></script> 
 </body>
 </html>

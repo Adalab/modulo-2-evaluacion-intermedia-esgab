@@ -11,7 +11,6 @@ const triesBoxCounterNumber = document.querySelector(".js_triesBoxCounterNumber"
 const randomNumber = getRandomNumber(100);
 let triesCounter = 0;
 
-
 //FUNCTIONS
 function getRandomNumber(max) { 
     return Math.ceil(Math.random() * max); 
@@ -67,5 +66,6 @@ function handleClickTestButton(event) {
 // EVENTS
 testButton.addEventListener('click', handleClickTestButton);
 
-// CONSOLE
+// CODE WHEN LOADING THE PAGE
 console.log(`Mi número aleatorio es ${randomNumber}`);
+resetPlayerInputNumber();

@@ -3,54 +3,97 @@
     margin: 0;
 }
 
-body {
+:root {
+    font-family: sans-serif;
+    --main-bg-color: rgb(53, 53, 53);
+}
+
+.game {
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-family: sans-serif;
     color: rgb(53, 53, 53);
     background: rgb(210,200,205);
     background: radial-gradient(circle, rgba(210,200,205,1) 0%, rgba(148,187,233,1) 100%);
 }
 
 .game-title {
-    margin-top: 20vh;
+    font-family: 'Silkscreen', sans-serif;
     margin-bottom: 30px;
 }
 
-.game-label {
-    display: block;
+.game-form {
+    border-radius: 30px;
+    margin:auto;
+    width:500px;
+    background-color: rgb(250, 250, 250, .5);
+    padding: 3% 5% 2%;
     text-align: center;
-    font-size: 17px;
-    margin-bottom: 10px;
 }
 
-.game-input {
-    padding: 10px;
-    border: 2px solid rgb(53, 53, 53);;
+.form-input {
+    padding: 18px;
+    border: none;
+    border-radius: 10px 0 0 10px;
+    width: 209px;
+    border:3px solid rgb(53, 53, 53);
 }
 
-.game-submit {
-    padding: 8px;
+.form-input:focus {
+    border:3px solid rgb(53, 53, 53);
+    outline-style: none;
+}
+
+.form-submit {
+    font-family: 'Nova Square', sans-serif;
+    padding: 16.5px 25px 17px;
+    border-radius: 0 10px 10px 0;
     font-size: 17px;
     background-color: rgb(53, 53, 53);
     color: white;
     border: none;
     border: 2px solid rgb(53, 53, 53);
+    margin-left: -5px;
 }
 
-.game-submit:hover {
-    background-color: rgb(109, 109, 109);
-    border: 2px solid rgb(109, 109, 109);
+.form-submit:hover {
     cursor: pointer;
 }
 
-.game-tip {
+.clue-box {
     margin: 20px 0 10px;
+    font-family: 'Nova Square', sans-serif;
+    font-size: 19px;
 }
 
-.game-tip, .game-try {
-    border: 4px solid rgb(211, 143, 143);
+.clue-box, .tries-box {
     padding: 5px 10px;
+}
+
+.tries-box {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    color: rgb(84, 84, 84);
+}
+
+.tries-counter {
+    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(80, 142, 121);
+    border-radius: 50%;
+    margin-top: 5px;
+    color: white;
+}
+
+.red {
+    color: rgb(230, 58, 58);
 }
