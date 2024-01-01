@@ -59,25 +59,42 @@ function resetTries() {
 }
 
 function checkNumbers(playerNumber) {
-    console.log({playerNumber, randomNumber})
+    console.log({playerNumber, randomNumber});
 
     if (isNaN(playerNumber) || playerNumber === " ") {
-        writeClue("Escribe un número por favor");
+        addTextColorRed(clueBox);
+        writeClue("¡Mecachis! Escribe un número por favor");
     } 
     else if (playerNumber < 1 || playerNumber > 100 ) {
-        writeClue("El número debe estar entre 1 y 100");
+        writeClue("¿A dónde vas? El número debe estar entre 1 y 100");
     } 
     else if (playerNumber === randomNumber) {
-        writeClue("Has ganado campeona!!!");
-        triesBox.innerHTML = `Enhorabuena! Te ha llevado ${triesCounter} intentos ganar, refresca la página para volver a jugar!`;
+        showRestartGameButton();
+        writeClue(`El ${playerNumber} es el número correcto<br>¡¡Has ganado campeona!!`);
         updateTries();
     }
+    else if ( (playerNumber - randomNumber) <= 0 && (playerNumber - randomNumber) >= -5) {
+        writeClue("¡Te acercas muchísimo! Un poquito bajo");
+        updateTries();
+    } 
+    else if ( (playerNumber - randomNumber) <= 0 && (playerNumber - randomNumber) >= -10) {
+        writeClue("Es bajo, pero te estás acercando");
+        updateTries();
+    } 
+    else if ( (playerNumber - randomNumber) <= 5 && (playerNumber - randomNumber) >= 0 ) {
+        writeClue("¡Estás muy muy cerca! Un poquito alto");
+        updateTries();
+    }      
+    else if ( (playerNumber - randomNumber) <= 10 && (playerNumber - randomNumber) >= 0 ) {
+        writeClue("Es alto, pero te estás acercando");
+        updateTries();
+    }  
     else if (playerNumber > randomNumber) {
-        writeClue("Demasiado alto");
+        writeClue("Upss, qué frío, es demasiado alto");
         updateTries();
     } 
     else if (playerNumber < randomNumber) {
-        writeClue("Demasiado bajo");
+        writeClue("Upss, qué frío, es demasiado bajo");
         updateTries();
     }
 }
