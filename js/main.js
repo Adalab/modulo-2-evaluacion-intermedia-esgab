@@ -32,7 +32,19 @@ function writeClue(message) {
 
 function updateTries() {
     triesCounter++;
-    triesBoxCounterNumber.innerHTML = triesCounter;
+    if (triesCounter === 16) {
+        writeClue("Has superado los 15 intentos, vuelve a comenzar");
+        showRestartGameButton() 
+    }
+    else  {
+        triesBoxCounterNumber.innerHTML = triesCounter;
+    }
+}
+
+function showRestartGameButton() {
+    testButton.value = "Volver a jugar";
+    playerNumberInput.classList.add("hidden");
+    testButton.classList.add("radius");
 }
 
 function resetTries() {
