@@ -123,6 +123,7 @@ function handleClickResetButton(event) {
     setRandomNumber();
     resetTries();
     writeClue("Pista: Escribe un número y dale a Prueba");
+    showTestButton();
     resetPlayerInputNumber();
 }
 
