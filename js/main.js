@@ -47,6 +47,12 @@ function showRestartGameButton() {
     testButton.classList.add("radius");
 }
 
+function showTestButton() {
+    testButton.value = "Prueba";
+    playerNumberInput.classList.remove("hidden");
+    testButton.classList.remove("radius");
+}
+
 function resetTries() {
     triesCounter = 0;
     triesBoxCounterNumber.innerHTML = triesCounter;
@@ -82,8 +88,17 @@ function resetPlayerInputNumber() {
 
 function handleClickTestButton(event) {
     event.preventDefault();
-    const playerNumber = getPlayerNumber();
-    checkNumbers(playerNumber);
+    if (testButton.value === "Volver a jugar") {
+        setRandomNumber();
+        resetTries();
+        writeClue("Pista: Escribe un número y dale a Prueba");
+        showTestButton();
+        resetPlayerInputNumber();
+    } 
+    else {
+        const playerNumber = getPlayerNumber();
+        checkNumbers(playerNumber);
+    }
 }
 
 function handleClickResetButton(event) {
