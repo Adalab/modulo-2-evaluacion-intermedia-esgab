@@ -12,13 +12,15 @@
 </head>
 <body class="game">
     <form class="game-form">
-        <img src="./img/numbers.png" width="280px">
+        <img class="game-img" src="./img/numbers.png">
         <h1 class="game-title">Adivina el número</h1>
         <!--<label for="Number" class="form-label">Introduce aquí tu número:</label>-->
-        <input type="text" id="Number" name="Number" placeholder="Introduce un número entre 1 y 100" class="form-input js_playerNumberInput" />
-        <input type="submit" class="form-submit js_testButton" value="Prueba">
+        <div class="input-container">
+            <input type="text" id="Number" name="Number" placeholder="Introduce un número entre 1 y 100" class="form-input js_playerNumberInput" />
+            <input type="submit" class="form-submit js_testButton" value="Prueba">
+        </div>
         <p class="clue-box js_clueBox">Pista: Escribe un número y dale a Prueba</span></p>
-        <p class="tries-box js_triesBox">Número de intentos: <span class="tries-counter js_triesBoxCounterNumber">0</span></p>
+        <p class="tries-box js_triesBox">Nº de intentos: <span class="tries-counter js_triesBoxCounterNumber">0</span></p>
     </form>
     <button class="reset-button js_resetButton">
         <i class="fa-solid fa-arrow-rotate-right"></i>Reset
